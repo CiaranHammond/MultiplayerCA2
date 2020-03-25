@@ -43,8 +43,12 @@ void World::setWorldScrollCompensation(float compensation)
 void World::update(sf::Time dt)
 {
 	// Scroll the world, reset player velocity
-	mCamera.move(0.f, mScrollSpeed * dt.asSeconds()*mScrollSpeedCompensation);
-	
+	//mCamera.move(0.f, mScrollSpeed * dt.asSeconds()*mScrollSpeedCompensation);
+	if (Aircraft* aircraft = getAircraft(1))
+	{
+		mCamera.setCenter(aircraft->getPosition());
+	}
+
 	for (Aircraft* a : mPlayerAircraft)
 	{
 		a->setVelocity(0.f, 0.f);
@@ -347,7 +351,7 @@ void World::adaptPlayerVelocity()
 			aircraft->setVelocity(velocity / std::sqrt(2.f));
 
 		// Add scrolling velocity
-		aircraft->accelerate(0.f, mScrollSpeed);
+		//aircraft->accelerate(0.f, mScrollSpeed);
 	}
 }
 
@@ -413,7 +417,23 @@ void World::spawnEnemies()
 
 		std::unique_ptr<Aircraft> enemy(new Aircraft(spawn.type, mTextures, mFonts));
 		enemy->setPosition(spawn.x, spawn.y);
-		enemy->setRotation(180.f);
+		int compass = (1 + rand() % 4);
+		if (compass == 1)
+		{
+			enemy->setRotation(180.f);
+		}
+		else if (compass == 2)
+		{
+			enemy->setRotation(90.f);
+		}
+		else if (compass == 3)
+		{
+			enemy->setRotation(0.f);
+		}
+		else if (compass == 4)
+		{
+			enemy->setRotation(270.f);
+		}
 
 		if (mNetworkedWorld)
 		{

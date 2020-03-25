@@ -110,7 +110,6 @@ void Aircraft::setMissileAmmo(int ammo)
 	mMissileAmmo = ammo;
 }
 
-
 void Aircraft::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	if (isDestroyed() && mShowExplosion)

@@ -6,6 +6,7 @@
 
 #include <SFML/Window/Event.hpp>
 #include <SFML/Network/TcpSocket.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <map>
 
 class CommandQueue;
