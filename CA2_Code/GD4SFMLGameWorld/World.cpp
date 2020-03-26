@@ -44,10 +44,11 @@ void World::update(sf::Time dt)
 {
 	// Scroll the world, reset player velocity
 	//mCamera.move(0.f, mScrollSpeed * dt.asSeconds()*mScrollSpeedCompensation);
-	if (Aircraft* aircraft = getAircraft(1))
+
+	/*if (Aircraft* aircraft = getAircraft(1))
 	{
 		mCamera.setCenter(aircraft->getPosition());
-	}
+	}*/
 
 	for (Aircraft* a : mPlayerAircraft)
 	{
@@ -204,7 +205,7 @@ void World::updateSounds()
 void World::loadTextures()
 {
 	mTextures.load(TextureID::Entities, "Media/Textures/Entities.png");
-	mTextures.load(TextureID::Jungle, "Media/Textures/Jungle.png");
+	mTextures.load(TextureID::Street, "Media/Textures/Street.png");
 	mTextures.load(TextureID::Explosion, "Media/Textures/Explosion.png");
 	mTextures.load(TextureID::Particle, "Media/Textures/Particle.png");
 	mTextures.load(TextureID::FinishLine, "Media/Textures/FinishLine.png");
@@ -287,7 +288,7 @@ void World::buildScene()
 
 	// Prepare the tiled background
 
-	sf::Texture& texture = mTextures.get(TextureID::Jungle);
+	sf::Texture& texture = mTextures.get(TextureID::Street);
 	sf::IntRect textureRect(mWorldBounds);
 	texture.setRepeated(true);
 
@@ -362,7 +363,8 @@ void World::addEnemies()
 		return;
 	}
 	// Add enemies to the spawn point container
-	addEnemy(AircraftID::Raptor, 0.f, 500.f);
+	//std::vector<SpawnPoint> mEnemies;
+	addEnemy(AircraftID::Raptor, 0.f, 450.f);
 	addEnemy(AircraftID::Raptor, 0.f, 1000.f);
 	addEnemy(AircraftID::Raptor, +100.f, 1150.f);
 	addEnemy(AircraftID::Raptor, -100.f, 1150.f);

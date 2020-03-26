@@ -110,6 +110,7 @@ private:
 	float mScrollSpeedCompensation;
 	std::vector<Aircraft*> mPlayerAircraft;
 
+	std::vector<SpawnPoint> mEnemies;
 	std::vector<SpawnPoint>	mEnemySpawnPoints;
 	std::vector<Aircraft*> mActiveEnemies;
 
