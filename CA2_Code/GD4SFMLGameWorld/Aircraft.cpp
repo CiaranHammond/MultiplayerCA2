@@ -337,12 +337,17 @@ void Aircraft::createProjectile(SceneNode& node, ProjectileID type, float xOffse
 	std::unique_ptr<Projectile> projectile(new Projectile(type, textures));
 
 	sf::Vector2f offset(xOffset * mSprite.getGlobalBounds().width, yOffset * mSprite.getGlobalBounds().height);
-	sf::Vector2f velocity(0, projectile->getMaxSpeed());
+	//sf::Vector2f velocity(0, projectile->getMaxSpeed());
 	//edit above to have the projectile going the way the aircraft is facing
 
+
+	//Got this line of code from Eoghan and Rian
+	sf::Vector2f velocity(projectile->getMaxSpeed() * -sin(toRadian(Aircraft::getRotation())), projectile->getMaxSpeed() * cos(toRadian(Aircraft::getRotation())));
+
 	float sign = isAllied() ? -1.f : +1.f;
-	projectile->setPosition(getWorldPosition() + offset * sign);
+	projectile->setPosition(Aircraft::getPosition());
 	projectile->setVelocity(velocity * sign);
+	projectile->setRotation(Aircraft::getRotation());
 	node.attachChild(std::move(projectile));
 }
 

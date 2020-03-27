@@ -124,11 +124,11 @@ void GameServer::executionThread()
 		tickClock.restart();
 
 		// Fixed update step
-		while (stepTime >= stepInterval)
+		/*while (stepTime >= stepInterval)
 		{
 			mBattleFieldRect.top += mBattleFieldScrollSpeed * stepInterval.asSeconds();
 			stepTime -= stepInterval;
-		}
+		}*/
 
 		// Fixed tick step
 		while (tickTime >= tickInterval)
