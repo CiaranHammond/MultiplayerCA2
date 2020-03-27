@@ -364,32 +364,32 @@ void World::addEnemies()
 	}
 	// Add enemies to the spawn point container
 	//std::vector<SpawnPoint> mEnemies;
-	addEnemy(AircraftID::Raptor, 0.f, 450.f);
-	addEnemy(AircraftID::Raptor, 0.f, 1000.f);
-	addEnemy(AircraftID::Raptor, +100.f, 1150.f);
-	addEnemy(AircraftID::Raptor, -100.f, 1150.f);
+	addEnemy(AircraftID::EastRaptor, 500.f, 0.f);
+	addEnemy(AircraftID::EastRaptor, 550.f, 0.f);
+	addEnemy(AircraftID::EastRaptor, 600.f, 0.f);
+	addEnemy(AircraftID::EastRaptor, 650.f, 0.f);
 	addEnemy(AircraftID::Avenger, 70.f, 1500.f);
 	addEnemy(AircraftID::Avenger, -70.f, 1500.f);
 
 	addEnemy(AircraftID::Avenger, -70.f, 1710.f);
 	addEnemy(AircraftID::Avenger, 70.f, 1700.f);
 	addEnemy(AircraftID::Avenger, 30.f, 1850.f);
-	addEnemy(AircraftID::Raptor, 300.f, 2200.f);
-	addEnemy(AircraftID::Raptor, -300.f, 2200.f);
-	addEnemy(AircraftID::Raptor, 0.f, 2200.f);
-	addEnemy(AircraftID::Raptor, 0.f, 2500.f);
+	addEnemy(AircraftID::EastRaptor, 300.f, 2200.f);
+	addEnemy(AircraftID::EastRaptor, -300.f, 2200.f);
+	addEnemy(AircraftID::EastRaptor, 0.f, 2200.f);
+	addEnemy(AircraftID::EastRaptor, 0.f, 2500.f);
 	addEnemy(AircraftID::Avenger, -300.f, 2700.f);
 	addEnemy(AircraftID::Avenger, -300.f, 2700.f);
-	addEnemy(AircraftID::Raptor, 0.f, 3000.f);
-	addEnemy(AircraftID::Raptor, 250.f, 3250.f);
-	addEnemy(AircraftID::Raptor, -250.f, 3250.f);
+	addEnemy(AircraftID::EastRaptor, 0.f, 3000.f);
+	addEnemy(AircraftID::EastRaptor, 250.f, 3250.f);
+	addEnemy(AircraftID::EastRaptor, -250.f, 3250.f);
 	addEnemy(AircraftID::Avenger, 0.f, 3500.f);
 	addEnemy(AircraftID::Avenger, 0.f, 3700.f);
-	addEnemy(AircraftID::Raptor, 0.f, 3800.f);
+	addEnemy(AircraftID::EastRaptor, 0.f, 3800.f);
 	addEnemy(AircraftID::Avenger, 0.f, 4000.f);
 	addEnemy(AircraftID::Avenger, -200.f, 4200.f);
-	addEnemy(AircraftID::Raptor, 200.f, 4200.f);
-	addEnemy(AircraftID::Raptor, 0.f, 4400.f);
+	addEnemy(AircraftID::EastRaptor, 200.f, 4200.f);
+	addEnemy(AircraftID::EastRaptor, 0.f, 4400.f);
 
 	// Sort all enemies according to their y value, such that lower enemies are checked first for spawning
 	sortEnemies();

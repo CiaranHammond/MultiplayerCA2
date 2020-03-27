@@ -2,7 +2,10 @@
 enum class AircraftID
 {
 	Eagle,
-	Raptor,
+	NorthRaptor,
+	EastRaptor,
+	SouthRaptor,
+	WestRaptor,
 	Avenger,
 	TypeCount
 };

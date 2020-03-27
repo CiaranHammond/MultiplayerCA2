@@ -17,7 +17,7 @@ GameServer::GameServer(sf::Vector2f battlefieldSize)
 	: mThread(&GameServer::executionThread, this)
 	, mListeningState(false)
 	, mClientTimeoutTime(sf::seconds(3.f))
-	, mMaxConnectedPlayers(10)
+	, mMaxConnectedPlayers(13)
 	, mConnectedPlayers(0)
 	, mWorldHeight(5000.f)
 	, mBattleFieldRect(0.f, mWorldHeight - battlefieldSize.y, battlefieldSize.x, battlefieldSize.y)
@@ -27,7 +27,7 @@ GameServer::GameServer(sf::Vector2f battlefieldSize)
 	, mAircraftIdentifierCounter(1)
 	, mWaitingThreadEnd(false)
 	, mLastSpawnTime(sf::Time::Zero)
-	, mTimeForNextSpawn(sf::seconds(5.f))
+	, mTimeForNextSpawn(sf::seconds(1.f))
 {
 	mListenerSocket.setBlocking(false);
 	mPeers[0].reset(new RemotePeer());
@@ -108,7 +108,7 @@ void GameServer::executionThread()
 
 	sf::Time stepInterval = sf::seconds(1.f / 60.f);
 	sf::Time stepTime = sf::Time::Zero;
-	sf::Time tickInterval = sf::seconds(1.f / 20.f);
+	sf::Time tickInterval = sf::seconds(1.f / 10.f);
 	sf::Time tickTime = sf::Time::Zero;
 	sf::Clock stepClock, tickClock;
 
@@ -176,7 +176,7 @@ void GameServer::tick()
 		// No more enemies are spawned near the end
 		if (mBattleFieldRect.top > 600.f)
 		{
-			std::size_t enemyCount = 1u + randomInt(2);
+			std::size_t enemyCount = 1;
 			float spawnCenter = static_cast<float>(randomInt(500) - 250);
 
 			// In case only one enemy is being spawned, it appears directly at the spawnCenter
@@ -184,11 +184,11 @@ void GameServer::tick()
 			float nextSpawnPosition = spawnCenter;
 
 			// In case there are two enemies being spawned together, each is spawned at each side of the spawnCenter, with a minimum distance
-			if (enemyCount == 2)
+			/*if (enemyCount >= 2)
 			{
 				planeDistance = static_cast<float>(150 + randomInt(250));
-				nextSpawnPosition = spawnCenter - planeDistance / 2.f;
-			}
+				nextSpawnPosition = spawnCenter - planeDistance / enemyCount;
+			}*/
 
 			// Send the spawn orders to all clients
 			for (std::size_t i = 0; i < enemyCount; ++i)
@@ -196,16 +196,16 @@ void GameServer::tick()
 				sf::Packet packet;
 				packet << static_cast<sf::Int32>(Server::PacketType::SpawnEnemy);
 				packet << static_cast<sf::Int32>(1 + randomInt(static_cast<int>(AircraftID::TypeCount) - 1));
-				packet << mWorldHeight - mBattleFieldRect.top + 500;
+				packet << mWorldHeight - mBattleFieldRect.top - 200;
 				packet << nextSpawnPosition;
 
-				nextSpawnPosition += planeDistance / 2.f;
+				//nextSpawnPosition += planeDistance / 2.f;
 
 				sendToAll(packet);
 			}
 
 			mLastSpawnTime = now();
-			mTimeForNextSpawn = sf::milliseconds(2000 + randomInt(6000));
+			mTimeForNextSpawn = sf::milliseconds(randomInt(1000));
 		}
 	}
 }

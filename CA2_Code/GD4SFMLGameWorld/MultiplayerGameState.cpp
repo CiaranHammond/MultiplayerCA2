@@ -55,7 +55,7 @@ MultiplayerGameState::MultiplayerGameState(StateStack& stack, Context context, b
 	centreOrigin(mFailedConnectionText);
 	mFailedConnectionText.setPosition(mWindow.getSize().x / 2.f, mWindow.getSize().y / 2.f);
 
-	// Render a "establishing connection" frame for user feedback
+	// Render an "establishing connection" frame for user feedback
 	mWindow.clear(sf::Color::Black);
 	mWindow.draw(mFailedConnectionText);
 	mWindow.display();
@@ -128,11 +128,11 @@ bool MultiplayerGameState::update(sf::Time dt)
 	{
 		mWorld.update(dt);
 
-		// Remove players whose aircrafts were destroyed
+		// Remove players whose characters are killed
 		bool foundLocalPlane = false;
 		for (auto itr = mPlayers.begin(); itr != mPlayers.end(); )
 		{
-			// Check if there are no more local planes for remote clients
+			// Check if there are no more local characters for remote clients
 			if (std::find(mLocalPlayerIdentifiers.begin(), mLocalPlayerIdentifiers.end(), itr->first) != mLocalPlayerIdentifiers.end())
 			{
 				foundLocalPlane = true;
@@ -186,7 +186,7 @@ bool MultiplayerGameState::update(sf::Time dt)
 			{
 				mConnected = false;
 
-				mFailedConnectionText.setString("Lost connection to server");
+				mFailedConnectionText.setString("Lost connection to server!");
 				centreOrigin(mFailedConnectionText);
 
 				mFailedConnectionClock.restart();
@@ -443,6 +443,10 @@ void MultiplayerGameState::handlePacket(sf::Int32 packetType, sf::Packet& packet
 		float relativeX;
 		packet >> type >> height >> relativeX;
 
+		if (type == static_cast<int>(AircraftID::EastRaptor))
+		{
+			height = 100;
+		}
 		mWorld.addEnemy(static_cast<AircraftID>(type), relativeX, height);
 		mWorld.sortEnemies();
 	} break;
