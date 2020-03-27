@@ -445,6 +445,22 @@ void MultiplayerGameState::handlePacket(sf::Int32 packetType, sf::Packet& packet
 
 		if (type == static_cast<int>(AircraftID::EastRaptor))
 		{
+			relativeX = 450;
+			height = 200;
+		}
+		else if (type == static_cast<int>(AircraftID::NorthRaptor))
+		{
+			relativeX = 200;
+			height = 450;
+		}
+		else if (type == static_cast<int>(AircraftID::WestRaptor))
+		{
+			relativeX = -450;
+			height = 600;
+		}
+		else if (type == static_cast<int>(AircraftID::SouthRaptor))
+		{
+			relativeX = 400;
 			height = 100;
 		}
 		mWorld.addEnemy(static_cast<AircraftID>(type), relativeX, height);

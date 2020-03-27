@@ -39,6 +39,7 @@ struct ProjectileData
 	float speed;
 	TextureID texture;
 	sf::IntRect textureRect;
+	float rotation;
 };
 
 struct PickupData

@@ -32,6 +32,25 @@ struct AircraftMover
 	int aircraftID;
 };
 
+struct AircraftRotation
+{
+	AircraftRotation(float angle, int identifier)
+		: angle(angle), aircraftID(identifier)
+	{
+	}
+
+	void operator() (Aircraft& aircraft, sf::Time) const
+	{
+		if (aircraft.getIdentifier() == aircraftID)
+		{
+			aircraft.rotate(angle);
+		}
+	}
+
+	float angle;
+	int aircraftID;
+};
+
 struct AircraftFireTrigger
 {
 	AircraftFireTrigger(int identifier)
@@ -171,6 +190,8 @@ void Player::initializeActions()
 	mActionBinding[ActionID::MoveRight].action = derivedAction<Aircraft>(AircraftMover(+1, 0, mIdentifier));
 	mActionBinding[ActionID::MoveUp].action = derivedAction<Aircraft>(AircraftMover(0, -1, mIdentifier));
 	mActionBinding[ActionID::MoveDown].action = derivedAction<Aircraft>(AircraftMover(0, +1, mIdentifier));
+	mActionBinding[ActionID::RotateLeft].action = derivedAction<Aircraft>(AircraftRotation(+2.f, mIdentifier));
+	mActionBinding[ActionID::RotateRight].action = derivedAction<Aircraft>(AircraftRotation(-2.f, mIdentifier));
 	mActionBinding[ActionID::Fire].action = derivedAction<Aircraft>(AircraftFireTrigger(mIdentifier));
 	mActionBinding[ActionID::LaunchMissile].action = derivedAction<Aircraft>(AircraftMissileTrigger(mIdentifier));
 }

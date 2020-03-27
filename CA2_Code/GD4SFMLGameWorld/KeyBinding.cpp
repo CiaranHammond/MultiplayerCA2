@@ -10,22 +10,24 @@ KeyBinding::KeyBinding(int controlPreconfiguration)
 	// Set initial key bindings for player 1
 	if (controlPreconfiguration == 1)
 	{
+		mKeyMap[sf::Keyboard::A] = ActionID::MoveLeft;
+		mKeyMap[sf::Keyboard::D] = ActionID::MoveRight;
+		mKeyMap[sf::Keyboard::W] = ActionID::MoveUp;
+		mKeyMap[sf::Keyboard::S] = ActionID::MoveDown;
+		mKeyMap[sf::Keyboard::Q] = ActionID::RotateLeft;
+		mKeyMap[sf::Keyboard::E] = ActionID::RotateRight;
+		mKeyMap[sf::Keyboard::F] = ActionID::Fire;
+		mKeyMap[sf::Keyboard::R] = ActionID::LaunchMissile;
+	}
+	else if (controlPreconfiguration == 2)
+	{
+		// Player 2
 		mKeyMap[sf::Keyboard::Left] = ActionID::MoveLeft;
 		mKeyMap[sf::Keyboard::Right] = ActionID::MoveRight;
 		mKeyMap[sf::Keyboard::Up] = ActionID::MoveUp;
 		mKeyMap[sf::Keyboard::Down] = ActionID::MoveDown;
 		mKeyMap[sf::Keyboard::Space] = ActionID::Fire;
 		mKeyMap[sf::Keyboard::M] = ActionID::LaunchMissile;
-	}
-	else if (controlPreconfiguration == 2)
-	{
-		// Player 2
-		mKeyMap[sf::Keyboard::A] = ActionID::MoveLeft;
-		mKeyMap[sf::Keyboard::D] = ActionID::MoveRight;
-		mKeyMap[sf::Keyboard::W] = ActionID::MoveUp;
-		mKeyMap[sf::Keyboard::S] = ActionID::MoveDown;
-		mKeyMap[sf::Keyboard::F] = ActionID::Fire;
-		mKeyMap[sf::Keyboard::R] = ActionID::LaunchMissile;
 	}
 }
 
@@ -92,6 +94,8 @@ bool isRealtimeAction(ActionID action)
 	case ActionID::MoveRight:
 	case ActionID::MoveDown:
 	case ActionID::MoveUp:
+	case ActionID::RotateLeft:
+	case ActionID::RotateRight:
 	case ActionID::Fire:
 		return true;
 
