@@ -281,8 +281,8 @@ void Aircraft::checkPickupDrop(CommandQueue& commands)
 void Aircraft::checkProjectileLaunch(sf::Time dt, CommandQueue& commands)
 {
 	// Enemies try to fire all the time
-	if (!isAllied())
-		fire();
+	//if (!isAllied())
+		//fire();
 
 	// Check for automatic gunfire, allow only in intervals
 	if (mIsFiring && mFireCountdown <= sf::Time::Zero)

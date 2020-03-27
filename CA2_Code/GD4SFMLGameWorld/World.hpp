@@ -118,4 +118,7 @@ private:
 	bool mNetworkedWorld;
 	NetworkNode* mNetworkNode;
 	SpriteNode* mFinishSprite;
+
+	int mKillCount;
+	sf::Text mKillCountText;
 };

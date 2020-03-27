@@ -21,10 +21,10 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<int>(AircraftID::EastRaptor)].speed = 80.f;
 	data[static_cast<int>(AircraftID::EastRaptor)].fireInterval = sf::Time::Zero;
 	data[static_cast<int>(AircraftID::EastRaptor)].texture = TextureID::Entities;
-	data[static_cast<int>(AircraftID::EastRaptor)].textureRect = sf::IntRect(144, 0, 84, 64);
+	data[static_cast<int>(AircraftID::EastRaptor)].textureRect = sf::IntRect(144, 0, 84, 100);
 
 	data[static_cast<int>(AircraftID::EastRaptor)].directions.push_back(Direction(+90.f, 80.f));
-	data[static_cast<int>(AircraftID::EastRaptor)].directions.push_back(Direction(+90.f, 160.f));
+	data[static_cast<int>(AircraftID::EastRaptor)].directions.push_back(Direction(+45.f, 160.f));
 	data[static_cast<int>(AircraftID::EastRaptor)].directions.push_back(Direction(+90.f, 80.f));
 	data[static_cast<int>(AircraftID::EastRaptor)].hasRollAnimation = false;
 
@@ -32,21 +32,21 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<int>(AircraftID::NorthRaptor)].speed = 80.f;
 	data[static_cast<int>(AircraftID::NorthRaptor)].fireInterval = sf::Time::Zero;
 	data[static_cast<int>(AircraftID::NorthRaptor)].texture = TextureID::Entities;
-	data[static_cast<int>(AircraftID::NorthRaptor)].textureRect = sf::IntRect(144, 0, 84, 64);
+	data[static_cast<int>(AircraftID::NorthRaptor)].textureRect = sf::IntRect(144, 0, 84, 100);
 
-	data[static_cast<int>(AircraftID::NorthRaptor)].directions.push_back(Direction(-180.f, 80.f));
-	data[static_cast<int>(AircraftID::NorthRaptor)].directions.push_back(Direction(-180.f, 160.f));
-	data[static_cast<int>(AircraftID::NorthRaptor)].directions.push_back(Direction(-180.f, 80.f));
+	data[static_cast<int>(AircraftID::NorthRaptor)].directions.push_back(Direction(+180.f, 80.f));
+	data[static_cast<int>(AircraftID::NorthRaptor)].directions.push_back(Direction(+225.f, 160.f));
+	data[static_cast<int>(AircraftID::NorthRaptor)].directions.push_back(Direction(+180.f, 80.f));
 	data[static_cast<int>(AircraftID::NorthRaptor)].hasRollAnimation = false;
 
 	data[static_cast<int>(AircraftID::SouthRaptor)].hitpoints = 20;
 	data[static_cast<int>(AircraftID::SouthRaptor)].speed = 80.f;
 	data[static_cast<int>(AircraftID::SouthRaptor)].fireInterval = sf::Time::Zero;
 	data[static_cast<int>(AircraftID::SouthRaptor)].texture = TextureID::Entities;
-	data[static_cast<int>(AircraftID::SouthRaptor)].textureRect = sf::IntRect(144, 0, 84, 64);
+	data[static_cast<int>(AircraftID::SouthRaptor)].textureRect = sf::IntRect(144, 0, 84, 100);
 
 	data[static_cast<int>(AircraftID::SouthRaptor)].directions.push_back(Direction(+180.f, 80.f));
-	data[static_cast<int>(AircraftID::SouthRaptor)].directions.push_back(Direction(+180.f, 160.f));
+	data[static_cast<int>(AircraftID::SouthRaptor)].directions.push_back(Direction(+225.f, 160.f));
 	data[static_cast<int>(AircraftID::SouthRaptor)].directions.push_back(Direction(+180.f, 80.f));
 	data[static_cast<int>(AircraftID::SouthRaptor)].hasRollAnimation = false;
 
@@ -54,10 +54,10 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<int>(AircraftID::WestRaptor)].speed = 80.f;
 	data[static_cast<int>(AircraftID::WestRaptor)].fireInterval = sf::Time::Zero;
 	data[static_cast<int>(AircraftID::WestRaptor)].texture = TextureID::Entities;
-	data[static_cast<int>(AircraftID::WestRaptor)].textureRect = sf::IntRect(144, 0, 84, 64);
+	data[static_cast<int>(AircraftID::WestRaptor)].textureRect = sf::IntRect(228, 0, 60, 95);
 
 	data[static_cast<int>(AircraftID::WestRaptor)].directions.push_back(Direction(-90.f, 80.f));
-	data[static_cast<int>(AircraftID::WestRaptor)].directions.push_back(Direction(-90.f, 160.f));
+	data[static_cast<int>(AircraftID::WestRaptor)].directions.push_back(Direction(-45.f, 160.f));
 	data[static_cast<int>(AircraftID::WestRaptor)].directions.push_back(Direction(-90.f, 80.f));
 	data[static_cast<int>(AircraftID::WestRaptor)].hasRollAnimation = false;
 
@@ -65,7 +65,6 @@ std::vector<AircraftData> initializeAircraftData()
 	data[static_cast<int>(AircraftID::Avenger)].speed = 50.f;
 	data[static_cast<int>(AircraftID::Avenger)].fireInterval = sf::seconds(2);
 	data[static_cast<int>(AircraftID::Avenger)].texture = TextureID::Entities;
-	data[static_cast<int>(AircraftID::Avenger)].textureRect = sf::IntRect(228, 0, 60, 59);
 	data[static_cast<int>(AircraftID::Avenger)].directions.push_back(Direction(+45.f, 50.f));
 	data[static_cast<int>(AircraftID::Avenger)].directions.push_back(Direction(0.f, 50.f));
 	data[static_cast<int>(AircraftID::Avenger)].directions.push_back(Direction(-45.f, 100.f));

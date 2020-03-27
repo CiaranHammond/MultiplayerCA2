@@ -52,8 +52,10 @@ private:
 
 	sf::Text mPlayerInvitationText;
 	sf::Time mPlayerInvitationTime;
+	
 
 	sf::Text mFailedConnectionText;
+	sf::Text mNumPlayersText;
 	sf::Clock mFailedConnectionClock;
 
 	bool mActiveState;

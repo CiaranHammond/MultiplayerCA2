@@ -47,6 +47,24 @@ MultiplayerGameState::MultiplayerGameState(StateStack& stack, Context context, b
 	mPlayerInvitationText.setString("Press Enter to spawn player 2");
 	mPlayerInvitationText.setPosition(1000 - mPlayerInvitationText.getLocalBounds().width, 760 - mPlayerInvitationText.getLocalBounds().height);
 
+	// Show the number of players in the game
+	/*
+	mNumPlayersText.setFont(context.fonts->get(FontID::Main));
+	mNumPlayersText.setCharacterSize(20);
+	mNumPlayersText.setFillColor(sf::Color::White);
+	mNumPlayersText.setString("Number of players: " + );
+	mNumPlayersText.setPosition(5.f, 100.f);
+	*/
+
+	// Show score
+	/*
+	mNumPlayersText.setFont(context.fonts->get(FontID::Main));
+	mNumPlayersText.setCharacterSize(20);
+	mNumPlayersText.setFillColor(sf::Color::White);
+	mNumPlayersText.setString("Your score:  ");
+	mNumPlayersText.setPosition(5.f, 150.f);
+	*/
+
 	// We reuse this text for "Attempt to connect" and "Failed to connect" messages
 	mFailedConnectionText.setFont(context.fonts->get(FontID::Main));
 	mFailedConnectionText.setString("Attempting to connect...");
@@ -54,6 +72,9 @@ MultiplayerGameState::MultiplayerGameState(StateStack& stack, Context context, b
 	mFailedConnectionText.setFillColor(sf::Color::White);
 	centreOrigin(mFailedConnectionText);
 	mFailedConnectionText.setPosition(mWindow.getSize().x / 2.f, mWindow.getSize().y / 2.f);
+
+	
+
 
 	// Render an "establishing connection" frame for user feedback
 	mWindow.clear(sf::Color::Black);
@@ -98,6 +119,8 @@ void MultiplayerGameState::draw()
 
 		if (mLocalPlayerIdentifiers.size() < 2 && mPlayerInvitationTime < sf::seconds(0.5f))
 			mWindow.draw(mPlayerInvitationText);
+
+		mWindow.draw(mNumPlayersText);
 	}
 	else
 	{
@@ -446,12 +469,12 @@ void MultiplayerGameState::handlePacket(sf::Int32 packetType, sf::Packet& packet
 		if (type == static_cast<int>(AircraftID::EastRaptor))
 		{
 			relativeX = 450;
-			height = 200;
+			height = 600;
 		}
 		else if (type == static_cast<int>(AircraftID::NorthRaptor))
 		{
 			relativeX = 200;
-			height = 450;
+			height = 500;
 		}
 		else if (type == static_cast<int>(AircraftID::WestRaptor))
 		{
@@ -460,8 +483,8 @@ void MultiplayerGameState::handlePacket(sf::Int32 packetType, sf::Packet& packet
 		}
 		else if (type == static_cast<int>(AircraftID::SouthRaptor))
 		{
-			relativeX = 400;
-			height = 100;
+			relativeX = -100;
+			height = -300;
 		}
 		mWorld.addEnemy(static_cast<AircraftID>(type), relativeX, height);
 		mWorld.sortEnemies();

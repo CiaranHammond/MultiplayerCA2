@@ -102,6 +102,7 @@ void Application::updateStatistics(sf::Time dt)
 
 		mStatisticsUpdateTime -= sf::seconds(1.0f);
 		mStatisticsNumFrames = 0;
+
 	}
 }
 

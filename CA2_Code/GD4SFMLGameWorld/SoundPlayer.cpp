@@ -7,7 +7,7 @@
 namespace
 {
 	const float ListenerZ = 300.f;
-	const float Attenuation = 8.f;
+	const float Attenuation = 25.f;
 	const float MinDistance2D = 200.f;
 	const float MinDistance3D = std::sqrt(MinDistance2D * MinDistance2D + ListenerZ * ListenerZ);
 }
@@ -18,8 +18,8 @@ SoundPlayer::SoundPlayer()
 {
 	mSoundsBuffer.load(SoundEffectID::AlliedGunfire, "Media/Sound/AlliedGunfire.wav");
 	mSoundsBuffer.load(SoundEffectID::EnemyGunfire, "Media/Sound/EnemyGunfire.wav");
-	mSoundsBuffer.load(SoundEffectID::Explosion1, "Media/Sound/Explosion1.wav");
-	mSoundsBuffer.load(SoundEffectID::Explosion2, "Media/Sound/Explosion2.wav");
+	mSoundsBuffer.load(SoundEffectID::Explosion1, "Media/Sound/bloodSplatter.wav");
+	mSoundsBuffer.load(SoundEffectID::Explosion2, "Media/Sound/bloodSplatter.wav");
 	mSoundsBuffer.load(SoundEffectID::LaunchMissile, "Media/Sound/LaunchMissile.wav");
 	mSoundsBuffer.load(SoundEffectID::CollectPickup, "Media/Sound/CollectPickup.wav");
 	mSoundsBuffer.load(SoundEffectID::Button, "Media/Sound/Button.wav");

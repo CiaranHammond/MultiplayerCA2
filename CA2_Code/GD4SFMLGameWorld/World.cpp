@@ -26,6 +26,8 @@ World::World(sf::RenderTarget& outputTarget, FontHolder& fonts, SoundPlayer& sou
 	, mNetworkedWorld(networked)
 	, mNetworkNode(nullptr)
 	, mFinishSprite(nullptr)
+	, mKillCount(0)
+	, mKillCountText()
 {
 	mSceneTexture.create(mTarget.getSize().x, mTarget.getSize().y);
 	loadTextures();
@@ -84,6 +86,7 @@ void World::update(sf::Time dt)
 
 void World::draw()
 {
+	
 	if (PostEffect::isSupported())
 	{
 		mSceneTexture.clear();
@@ -206,7 +209,7 @@ void World::loadTextures()
 {
 	mTextures.load(TextureID::Entities, "Media/Textures/Entities.png");
 	mTextures.load(TextureID::Street, "Media/Textures/Street.png");
-	mTextures.load(TextureID::Explosion, "Media/Textures/Explosion.png");
+	mTextures.load(TextureID::Explosion, "Media/Textures/BloodSplat.png");
 	mTextures.load(TextureID::Particle, "Media/Textures/Particle.png");
 	mTextures.load(TextureID::FinishLine, "Media/Textures/FinishLine.png");
 }
@@ -247,6 +250,16 @@ void World::handleCollisions()
 			// Collision: Player damage = enemy's remaining HP
 			player.damage(enemy.getHitpoints());
 			enemy.destroy();
+			//add a count to count how many zombies are killed
+			mKillCount++;
+
+			//display it
+			mKillCountText.setFont(mFonts.get(FontID::Main));
+			mKillCountText.setCharacterSize(20);
+			mKillCountText.setFillColor(sf::Color::White);
+			mKillCountText.setString("Killcount:" + toString(mKillCount));
+			mKillCountText.setPosition(5.f, 150.f);
+
 		}
 
 		else if (matchesCategories(pair, CategoryID::PlayerAircraft, CategoryID::Pickup))
